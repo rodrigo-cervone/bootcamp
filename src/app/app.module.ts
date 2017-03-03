@@ -1,12 +1,21 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { Logger, Options, Level } from "angular2-logger/core";
+import { Storage } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { GithubUsers } from '../providers/github-users.providers';
+import { UsersPage } from '../pages/users/users';
+import { ReposPage } from '../pages/repos/repos';
+import { UserDetailsPage } from '../pages/user-details/user-details';
+import { UserLoginPage } from '../pages/user-login/user-login';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    UsersPage,
+    ReposPage,
+    UserDetailsPage,
+    UserLoginPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -14,8 +23,18 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    UsersPage,
+    ReposPage,
+    UserDetailsPage,
+    UserLoginPage,
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    { provide: Options, useValue: { level: Level.DEBUG } },
+    Logger,
+    GithubUsers,
+    Storage,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
 })
-export class AppModule {}
+export class AppModule {
+}
