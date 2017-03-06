@@ -40,13 +40,11 @@ export class GithubUsers {
     private logger: Logger
   ) {
     this.logger.debug("GithubUsers Provider");
-    let signinInfo: SigninInfo;
-
     this.storage.get('signinInfo').then((signinInfo) => {
       if(signinInfo && signinInfo.userId > 0) {
         this.logger.debug("User is signed in. Fetch the user from the local storage");
         this.signinInfo = signinInfo;
-        this.events.publish('user::loggedin', signinInfo);
+        this.events.publish('user::loggedin', this.signinInfo);
       }
     });
   }
