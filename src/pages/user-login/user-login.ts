@@ -5,7 +5,7 @@ import {
   GithubUsers,
   SigninInfo,
   ERR_SIGNIN_BAD_CREDENTIALS
-} from '../../providers/github-users.providers';
+} from '../../services/github-users.services';
 import { UserDetailsPage } from '../user-details/user-details';
 
 /*

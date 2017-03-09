@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import { User } from '../models/user.model';
 import { Repo } from '../models/repo.model';
 
-import github from 'octonode';
+import { github } from 'octonode';
 
 export interface SigninInfo {
   errorCode: Number,
@@ -34,12 +34,13 @@ export class GithubUsers {
   private ghClient: any;
 
   constructor(
-    public http: Http,
+    private http: Http,
     private storage: Storage,
     private events: Events,
     private logger: Logger
   ) {
-    this.logger.debug("GithubUsers Provider");
+    this.logger.debug("GithubUsers Service");
+
     this.storage.get('signinInfo').then((signinInfo) => {
       if(signinInfo && signinInfo.userId > 0) {
         this.logger.debug("User is signed in. Fetch the user from the local storage");
@@ -57,7 +58,7 @@ export class GithubUsers {
     return this.signinInfo.login;
   }
 
-  login(username, password): Observable<SigninInfo> {
+  login(username: string, password: string): Observable<SigninInfo> {
 
       let p: Promise<SigninInfo> = new Promise((resolve, reject) => {
 
@@ -75,7 +76,7 @@ export class GithubUsers {
       github.auth.config({
         username: username,
         password: password
-      }).login(scopes, (err, id, token) => {
+      }).login(scopes, (err: any, id: number, token:string) => {
         if (err != null) {
           if (err.message === "Bad credentials") {
             this.signinInfo.errorCode = ERR_SIGNIN_BAD_CREDENTIALS;
