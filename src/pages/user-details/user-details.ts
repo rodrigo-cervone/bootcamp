@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Logger } from 'angular2-logger/core';
 import { User } from '../../models/user.model';
-import { GithubUsers } from '../../providers/github-users.providers';
+import { GithubUsers } from '../../services/github-users.services';
 import { ReposPage } from '../repos/repos';
 /*
   Generated class for the UserDetails page.
@@ -33,7 +33,7 @@ export class UserDetailsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserDetailsPage');
+    // console.log('ionViewDidLoad UserDetailsPage');
   }
 
   goToRepos(login: string) {

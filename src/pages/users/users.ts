@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Logger } from 'angular2-logger/core';
 
-import { GithubUsers } from '../../providers/github-users.providers';
+import { GithubUsers } from '../../services/github-users.services';
 import { User } from '../../models/user.model';
 import { UserDetailsPage } from '../user-details/user-details';
 /*

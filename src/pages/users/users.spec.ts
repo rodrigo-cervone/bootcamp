@@ -1,27 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By }              from '@angular/platform-browser';
-import { DebugElement }    from '@angular/core';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { IonicModule } from 'ionic-angular';
 import { Logger } from 'angular2-logger/core';
 import { NavController } from 'ionic-angular';
+import { Observable } from 'rxjs/Rx';
 
-import { GithubUsers } from '../../providers/github-users.providers';
-
-import {
-  GithubUsersStub,
-  StorageStub,
-  LoggerStub,
-  NavControllerStub
-} from '../../stubs';
+import { GithubUsers } from '../../services/github-users.services';
 
 import { UsersPage } from './users';
+
+
+class GithubUsersMock {
+  load() {
+    let u: Array<any> = [{
+      errorCode: 0,
+      userId: 1,
+      userToken: "token",
+      login: "login"
+    }]
+    return Observable.of(u);
+  }
+}
 
 describe('User Component Page', () => {
 
   let comp:    UsersPage;
   let fixture: ComponentFixture<UsersPage>;
-  let de:      DebugElement;
-  let el:      HTMLElement;
 
   beforeEach(() => {
 
@@ -33,9 +36,9 @@ describe('User Component Page', () => {
         UsersPage
       ], // declare the test component
       providers: [
-        {provide: Logger, useClass: LoggerStub},
-        {provide: NavController, useClass: NavControllerStub},
-        {provide: GithubUsers, useClass: GithubUsersStub}
+        {provide: Logger, useValue: { debug: () => {}, info: () => {}}},
+        {provide: NavController, useValue: {}},
+        {provide: GithubUsers, useClass: GithubUsersMock}
       ]
     }).compileComponents();
 

@@ -1,7 +1,7 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "version": "1.0.0-rc.1",
-    "name": "ionic2-tdd"
+    "name": "bootcamp"
   },
   "apps": [
     {
@@ -11,17 +11,14 @@
         "assets"
       ],
       "index": "index.html",
-      "main": "main.ts",
+      "main": "app/main.ts",
       "test": "test.ts",
-      "tsconfig": "tsconfig.test.json",
+      "tsconfig": "tsconfig.json",
+      "testTsconfig": "tsconfig.test.json",
       "prefix": "app",
-      "mobile": false,
-      "styles": [
-        "styles.css"
-      ],
       "scripts": [],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }

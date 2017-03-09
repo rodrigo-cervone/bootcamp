@@ -4,7 +4,7 @@ import { Logger } from 'angular2-logger/core';
 
 import { Repo } from '../../models/repo.model';
 
-import { GithubUsers } from '../../providers/github-users.providers';
+import { GithubUsers } from '../../services/github-users.services';
 /*
   Generated class for the Repos page.
 
