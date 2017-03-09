@@ -8,8 +8,13 @@ import { Events } from 'ionic-angular';
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { UserLoginPage } from '../pages/user-login/user-login';
-import { GithubUsers } from '../providers/github-users.providers';
+import { GithubUsers, SigninInfo } from '../services/github-users.services';
 import { UserDetailsPage } from '../pages/user-details/user-details';
+
+interface Page {
+  title: string,
+  component: any
+}
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +23,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = UserLoginPage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<Page>;
 
   constructor(
     public platform: Platform,
@@ -41,8 +46,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
-      this.events.subscribe('user::loggedin', ({login}) => {
-        this.nav.setRoot(UserDetailsPage, {login: login});
+      this.events.subscribe('user::loggedin', (signinInfo: SigninInfo) => {
+        this.nav.setRoot(UserDetailsPage, {'login':signinInfo.login});
       });
     });
   }
@@ -53,7 +58,7 @@ export class MyApp {
     this.nav.setRoot(UserLoginPage);
   }
 
-  openPage(page) {
+  openPage(page: Page) {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page

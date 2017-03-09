@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 
 import {Querystring} from "request/lib/querystring.js";
 
-Querystring.prototype.unescape = function(val) {
-    return val // TODO should unescape it
+Querystring.prototype.unescape = function(val: string) {
+    return val; // TODO should unescape it
 };
 platformBrowserDynamic().bootstrapModule(AppModule);

@@ -3,7 +3,7 @@ import { Logger, Options, Level } from "angular2-logger/core";
 import { Storage } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { GithubUsers } from '../providers/github-users.providers';
+import { GithubUsers } from '../services/github-users.services';
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { UserDetailsPage } from '../pages/user-details/user-details';

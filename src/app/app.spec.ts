@@ -1,52 +1,36 @@
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { IonicModule } from 'ionic-angular';
 import { Logger } from 'angular2-logger/core';
 
 import { MyApp } from './app.component';
-import { UsersPage } from '../pages/users/users';
-import { ReposPage } from '../pages/repos/repos';
 import { UserLoginPage } from '../pages/user-login/user-login';
 
-import { GithubUsers } from '../providers/github-users.providers';
-
-import {
-  GithubUsersStub,
-  LoggerStub
-} from '../stubs';
-
-import { UserDetailsPage } from '../pages/user-details/user-details';
+import { GithubUsers } from '../services/github-users.services';
 
 let comp: MyApp;
 let fixture: ComponentFixture<MyApp>;
 
 describe('Component: Root Component', () => {
 
-    beforeEach(async(() => {
+    beforeEach(() => {
 
-        TestBed.configureTestingModule({
+      TestBed.configureTestingModule({
 
-            declarations: [ MyApp ],
+          declarations: [ MyApp ],
 
-            providers: [
-              { provide: GithubUsers, useClass: GithubUsersStub },
-              { provide: Logger, useClass: LoggerStub }
-            ],
+          providers: [
+            { provide: GithubUsers, useValue: {} },
+            { provide: Logger, useValue: {} }
+          ],
 
-            imports: [
-                IonicModule.forRoot(MyApp)
-            ]
+          imports: [
+              IonicModule.forRoot(MyApp)
+          ]
 
-        })
-        .overrideComponent(MyApp, {
-          set: {
-            providers: [
+      })
+      .compileComponents();
 
-            ]
-          }
-        })
-        .compileComponents();
-
-    }));
+    });
 
     beforeEach(() => {
 
