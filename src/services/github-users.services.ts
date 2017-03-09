@@ -39,7 +39,8 @@ export class GithubUsers {
     private events: Events,
     private logger: Logger
   ) {
-    this.logger.debug("GithubUsers Provider");
+    this.logger.debug("GithubUsers Service");
+
     this.storage.get('signinInfo').then((signinInfo) => {
       if(signinInfo && signinInfo.userId > 0) {
         this.logger.debug("User is signed in. Fetch the user from the local storage");
