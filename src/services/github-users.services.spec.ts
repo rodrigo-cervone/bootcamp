@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
 import { Logger } from 'angular2-logger/core';
 import { Events } from 'ionic-angular';
 
-import { GithubUsers, SigninInfo } from './github-users.services';
+import { GithubUsers } from './github-users.services';
 
 describe('Github Users Service', () => {
 
