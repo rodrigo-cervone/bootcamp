@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import { User } from '../models/user.model';
 import { Repo } from '../models/repo.model';
 
-import { github } from 'octonode';
+import github from 'octonode';
 
 export interface SigninInfo {
   errorCode: Number,
@@ -73,10 +73,12 @@ export class GithubUsers {
         return resolve(this.signinInfo);
       }
 
-      github.auth.config({
+      github.auth
+      .config({
         username: username,
         password: password
-      }).login(scopes, (err: any, id: number, token:string) => {
+      })
+      .login(scopes, (err: any, id: number, token:string) => {
         if (err != null) {
           if (err.message === "Bad credentials") {
             this.signinInfo.errorCode = ERR_SIGNIN_BAD_CREDENTIALS;

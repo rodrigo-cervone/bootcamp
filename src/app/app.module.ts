@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { Logger, Options, Level } from "angular2-logger/core";
 import { Storage } from '@ionic/storage';
+
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { GithubUsers } from '../services/github-users.services';
@@ -8,6 +9,10 @@ import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
+
+export function provideStorage() {
+  return new Storage( ['sqlite', 'websql', 'indexeddb'], { name: '__bootcampdb' } );
+}
 
 @NgModule({
   declarations: [
@@ -30,10 +35,10 @@ import { UserLoginPage } from '../pages/user-login/user-login';
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
+    { provide: Storage, useFactory: provideStorage },
+    { provide: ErrorHandler, useClass: IonicErrorHandler},
     Logger,
-    GithubUsers,
-    Storage,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    GithubUsers
   ]
 })
 export class AppModule {
