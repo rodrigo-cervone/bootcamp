@@ -8,14 +8,26 @@
   <ion-title>
     Sign in...
   </ion-title>
-  <form (ngSubmit)="login(name, password)">
+  <form (ngSubmit) = "login(name, password)"
+        #loginForm = "ngForm">
     <ion-item>
-      <ion-input [(ngModel)]="name" name="username" placeholder="Username"></ion-input>
+      <ion-input [(ngModel)] = "name"
+                        name = "username"
+                 placeholder = "Username"
+                 required
+                 ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="password" [(ngModel)]="password" name="userpassword" placeholder="Password"></ion-input>
+      <ion-input  type        = "password"
+                  [(ngModel)] = "password"
+                  name        = "userpassword"
+                  placeholder = "Password"
+                  required></ion-input>
     </ion-item>
-    <button ion-button type="submit" block>
+    <button ion-button
+            type        = "submit"
+            block
+            [disabled]  = "!loginForm.form.valid">
       Sign in&nbsp;
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </button>

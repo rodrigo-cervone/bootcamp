@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Logger } from 'angular2-logger/core';
+
+
 import {
   GithubUsers,
   SigninInfo,
@@ -27,7 +29,8 @@ export class UserLoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private githubUsers: GithubUsers,
-    private logger: Logger
+    private logger: Logger,
+    private alertCtrl: AlertController
   ) {}
 
   ionViewDidLoad() {
@@ -43,9 +46,27 @@ export class UserLoginPage {
         this.navCtrl.setRoot(UserDetailsPage, {login: this.userInfo.login});
       }, (userInfo: SigninInfo) => {
         if (userInfo.errorCode === ERR_SIGNIN_BAD_CREDENTIALS) {
+          this.showAlert("Error ","Bad credentials")
           return this.logger.debug("Show bad credentials message");
         }
         return this.logger.error(userInfo.errorCode);
       });
   }
+
+  /**
+  * Method to show alert
+  * @Method
+  * @name showAlert
+  * @param  {string} title
+  * @param  {string} subTitle
+  */
+  showAlert(title: string,subTitle: string) {
+    let alert = this.alertCtrl.create({
+                  title     : title,
+                  subTitle  : subTitle,
+                  buttons   : ['Ok']
+                  });
+   alert.present();
+  }//End
+
 }
