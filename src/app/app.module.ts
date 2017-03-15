@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { GithubUsers } from '../services/github-users.services';
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
+import { UserEditPage } from '../pages/user-edit/user-edit';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
 
@@ -21,6 +22,7 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
+    UserEditPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,6 +34,7 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
+    UserEditPage
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
