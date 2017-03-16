@@ -3,7 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Logger } from 'angular2-logger/core';
 import { User } from '../../models/user.model';
 import { GithubUsers } from '../../services/github-users.services';
+import { SessionService } from '../../services/session.service';
 import { ReposPage } from '../repos/repos';
+
 /*
   Generated class for the UserDetails page.
 
@@ -23,17 +25,15 @@ export class UserDetailsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private githubUsers: GithubUsers,
-    private logger: Logger
+    private logger: Logger,
+    private sessionService : SessionService
   ) {
     this.login = navParams.get('login');
-    this.githubUsers.loadDetails(this.login).subscribe((user: User) => {
-      this.user = user;
-      this.logger.debug("User: ", this.user);
-    });
+    this.user=this.sessionService.userReturn;
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad UserDetailsPage');
+      //Nothing
   }
 
   goToRepos(login: string) {

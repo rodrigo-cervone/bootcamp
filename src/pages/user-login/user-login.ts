@@ -9,7 +9,8 @@ import {
   ERR_SIGNIN_BAD_CREDENTIALS
 } from '../../services/github-users.services';
 import { UserDetailsPage } from '../user-details/user-details';
-
+import { SessionService } from '../../services/session.service';
+import { User } from '../../models/user.model';
 /*
   Generated class for the UserLogin page.
 
@@ -24,14 +25,19 @@ import { UserDetailsPage } from '../user-details/user-details';
 export class UserLoginPage {
 
   private userInfo: SigninInfo;
+  //public sessionService: SessionService;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private githubUsers: GithubUsers,
     private logger: Logger,
-    private alertCtrl: AlertController
-  ) {}
+    private alertCtrl: AlertController,
+    public sessionService : SessionService
+  ) {
+    //this.sessionService= new SessionService();
+    //debugger;
+  }
 
   ionViewDidLoad() {
     this.logger.debug('ionViewDidLoad UserLoginPage');
@@ -43,7 +49,16 @@ export class UserLoginPage {
       .subscribe((userInfo: SigninInfo) => {
         this.logger.debug('Authentication was ok.');
         this.userInfo = userInfo;
-        this.navCtrl.setRoot(UserDetailsPage, {login: this.userInfo.login});
+
+        //Getting user info and save on a service
+        this.githubUsers
+          .loadDetails(this.userInfo.login)
+            .subscribe((user: User) => {
+                this.sessionService.userReturn = user;
+                this.sessionService.loggedInReturn = true;
+                this.navCtrl.setRoot(UserDetailsPage, {login: this.userInfo.login});
+              });
+
       }, (userInfo: SigninInfo) => {
         if (userInfo.errorCode === ERR_SIGNIN_BAD_CREDENTIALS) {
           this.showAlert("Error ","Bad credentials")
