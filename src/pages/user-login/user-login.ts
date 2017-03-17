@@ -35,8 +35,7 @@ export class UserLoginPage {
     private alertCtrl: AlertController,
     public sessionService : SessionService
   ) {
-    //this.sessionService= new SessionService();
-    //debugger;
+    //Nothing
   }
 
   ionViewDidLoad() {
@@ -62,7 +61,6 @@ export class UserLoginPage {
       }, (userInfo: SigninInfo) => {
         if (userInfo.errorCode === ERR_SIGNIN_BAD_CREDENTIALS) {
           this.showAlert("Error ","Bad credentials")
-          return this.logger.debug("Show bad credentials message");
         }
         return this.logger.error(userInfo.errorCode);
       });
