@@ -45,21 +45,5 @@
     "karma-remap-istanbul": "^0.6.0",
     "typescript": "^2.2.0"
   },
-  "cordovaPlugins": [
-    "cordova-plugin-whitelist",
-    "cordova-plugin-console",
-    "cordova-plugin-statusbar",
-    "cordova-plugin-device",
-    "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
-  ],
-  "cordovaPlatforms": [
-    "ios",
-    {
-      "platform": "ios",
-      "version": "",
-      "locator": "ios"
-    }
-  ],
   "description": "bootcamp: An Ionic project"
 }
