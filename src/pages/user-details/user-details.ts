@@ -59,6 +59,5 @@ export class UserDetailsPage {
     this.isSpanish = !this.isSpanish;
     this.changeLanguage();
     this.currentLanguage = this.i18nService.currentLanguage;
-    console.log("is spanish?", this.isSpanish);
   }
 }

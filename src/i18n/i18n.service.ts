@@ -31,7 +31,6 @@ export class I18nService {
     private translate(key: string): string {
         // private perform translation
         let translation = key;
-        console.log(this.dict[this._currentLang][translation]);
         if (this.dict[this._currentLang] && this.dict[this._currentLang][translation]) {
             return this.dict[this._currentLang][translation];
         }

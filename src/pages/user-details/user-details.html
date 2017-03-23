@@ -12,8 +12,8 @@
 <ion-content padding >
   <ion-list>
     <ion-item>
-      <ion-label (click)="onToggleClick()">{{ 'Spanish' | i18n }}</ion-label>
-      <ion-toggle [(ngModel)]="optionValue" (ionChange)="onToggleChange()"></ion-toggle>
+      <ion-label>{{ 'Spanish' | i18n }}</ion-label>
+      <ion-toggle (ionChange)="onToggleChange()"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>{{ 'Followers' | i18n }}</ion-label>
