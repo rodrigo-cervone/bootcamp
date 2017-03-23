@@ -4,11 +4,16 @@ import { Storage } from '@ionic/storage';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
+/* Services */
 import { GithubUsers } from '../services/github-users.services';
+
+/* Pages */
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
+import { PerformanceGSAPPage } from '../pages/performance-gsap/performance-gsap';
 
 export function provideStorage() {
   return new Storage( ['sqlite', 'websql', 'indexeddb'], { name: '__bootcampdb' } );
@@ -21,6 +26,7 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
+    PerformanceGSAPPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,6 +38,7 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
+    PerformanceGSAPPage
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
@@ -42,4 +49,7 @@ export function provideStorage() {
   ]
 })
 export class AppModule {
+  constructor() {
+    // console.log(UserLoginPage)
+  }
 }
