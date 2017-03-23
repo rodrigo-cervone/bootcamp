@@ -60,6 +60,14 @@ export class MockGithubBackendService {
         });
     }
 
+    /**
+     * This method allows the request to be handled for the http 
+     * when the request is not handled for the MockGithubBackendService service.
+     * Basically call the Http backend with the same connection that we received 
+     * in our fake backend.
+     * 
+     * @param connection 
+     */
     private passThrough(connection: MockConnection) {
         this.logger.debug("Passing through http");
         let realHttp = new Http(this.realBackend, this.options);
