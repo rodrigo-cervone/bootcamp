@@ -49,7 +49,7 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
       this.events.subscribe('user::loggedin', (signinInfo: SigninInfo) => {
-        this.nav.setRoot(PerformanceGSAPPage);
+        this.nav.setRoot(UserDetailsPage);
       });
     });
   }
