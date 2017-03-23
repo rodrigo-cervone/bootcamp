@@ -9,6 +9,12 @@ import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
+import { I18nModule } from '../i18n/i18n.module';
+
+import { 
+  I18nService, 
+  LANG_ES_NAME 
+} from '../i18n/i18n.service';
 
 export function provideStorage() {
   return new Storage( ['sqlite', 'websql', 'indexeddb'], { name: '__bootcampdb' } );
@@ -20,12 +26,12 @@ export function provideStorage() {
     UsersPage,
     ReposPage,
     UserDetailsPage,
-    UserLoginPage,
+    UserLoginPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    I18nModule
   ],
-  bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     UsersPage,
@@ -38,8 +44,13 @@ export function provideStorage() {
     { provide: Storage, useFactory: provideStorage },
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     Logger,
-    GithubUsers
-  ]
+    GithubUsers,
+    I18nService
+  ],
+  bootstrap: [IonicApp]
 })
 export class AppModule {
+  constructor(i18nService:I18nService) {
+    i18nService.use(LANG_ES_NAME);
+  }
 }

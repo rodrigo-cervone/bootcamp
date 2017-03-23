@@ -12,19 +12,23 @@
 <ion-content padding >
   <ion-list>
     <ion-item>
-      <ion-label>Followers</ion-label>
+      <ion-label (click)="onToggleClick()">{{ 'Spanish' | i18n }}</ion-label>
+      <ion-toggle [(ngModel)]="optionValue" (ionChange)="onToggleChange()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'Followers' | i18n }}</ion-label>
       <ion-badge item-right>{{user?.followers}}</ion-badge>
     </ion-item>
      <ion-item>
-      <ion-label>Following</ion-label>
+      <ion-label>{{ 'Following' | i18n }}</ion-label>
       <ion-badge item-right>{{user?.following}}</ion-badge>
     </ion-item>
      <ion-item (click)="goToRepos(user.login)">
-      <ion-label>Repos</ion-label>
+      <ion-label>{{ 'Repos' | i18n }}</ion-label>
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
      <ion-item>
-      <ion-label>Gists</ion-label>
+      <ion-label>{{ 'Gists' | i18n }}</ion-label>
       <ion-badge item-right>{{user?.public_gists}}</ion-badge>
     </ion-item>
   </ion-list>
