@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { LANG_ES_TRANS } from './lang/dict.es';
 import { LANG_EN_TRANS } from './lang/dict.en';
 
-export const LANG_EN_NAME = 'en';
-export const LANG_ES_NAME = 'es';
-
+export const LANGS = {
+    EN: 'en',
+    ES: 'es'
+}
 
 @Injectable()
 export class I18nService {
@@ -14,8 +15,8 @@ export class I18nService {
     // inject our translations
     constructor() {
         this.dict = {
-            [LANG_ES_NAME]: LANG_ES_TRANS,
-            [LANG_EN_NAME]: LANG_EN_TRANS
+            [LANGS.ES]: LANG_ES_TRANS,
+            [LANGS.EN]: LANG_EN_TRANS
         }
     }
 

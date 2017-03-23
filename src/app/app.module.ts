@@ -13,7 +13,7 @@ import { I18nModule } from '../i18n/i18n.module';
 
 import { 
   I18nService, 
-  LANG_EN_NAME 
+  LANGS, 
 } from '../i18n/i18n.service';
 
 export function provideStorage() {
@@ -51,6 +51,6 @@ export function provideStorage() {
 })
 export class AppModule {
   constructor(i18nService:I18nService) {
-    i18nService.use(LANG_EN_NAME);
+    i18nService.use(LANGS.EN);
   }
 }

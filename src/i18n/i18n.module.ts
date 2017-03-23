@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { I18nPipe } from './i18n.pipe';
-import { I18nService, LANG_EN_NAME, LANG_ES_NAME } from './i18n.service';
+import { I18nService, LANGS } from './i18n.service';
 
 interface i18nConfig {
     lang: string
@@ -12,8 +12,8 @@ interface i18nConfig {
         I18nPipe
     ],
     providers: [
-        {provide: LANG_EN_NAME, useValue: LANG_EN_NAME},
-        {provide: LANG_ES_NAME, useValue: LANG_ES_NAME},
+        {provide: LANGS.EN, useValue: LANGS.EN},
+        {provide: LANGS.ES, useValue: LANGS.ES},
         I18nService
     ],
     exports: [

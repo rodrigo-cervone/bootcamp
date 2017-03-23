@@ -5,8 +5,7 @@ import { User } from '../../models/user.model';
 import { GithubUsers } from '../../services/github-users.services';
 import { ReposPage } from '../repos/repos';
 import { 
-  LANG_EN_NAME,
-  LANG_ES_NAME,
+  LANGS,
   I18nService
 } from '../../i18n/i18n.service';
 
@@ -40,7 +39,7 @@ export class UserDetailsPage {
       this.logger.debug("User: ", this.user);
     });
     this.currentLanguage = this.i18nService.currentLanguage;
-    this.isSpanish = this.currentLanguage === LANG_ES_NAME;
+    this.isSpanish = this.currentLanguage === LANGS.ES;
   }
 
   ionViewDidLoad() {
@@ -51,10 +50,18 @@ export class UserDetailsPage {
     this.navCtrl.push(ReposPage, {login});
   }
 
+  /**
+   * 
+   * Sets the new language to the service.
+   */
   changeLanguage() {
-    this.i18nService.use(this.isSpanish ? LANG_ES_NAME : LANG_EN_NAME);
+    this.i18nService.use(this.isSpanish ? LANGS.ES : LANGS.EN);
   }
 
+ /** 
+  * Handler function for the toggle component in the view.
+  * Calls change language and keeps track of the current language.
+  */
   onToggleChange() {
     this.isSpanish = !this.isSpanish;
     this.changeLanguage();
