@@ -25,7 +25,6 @@ import { User } from '../../models/user.model';
 export class UserLoginPage {
 
   private userInfo: SigninInfo;
-  //public sessionService: SessionService;
 
   constructor(
     public navCtrl: NavController,
@@ -67,8 +66,7 @@ export class UserLoginPage {
   }
 
   /**
-  * Method to show alert
-  * @Method
+  * @TODO Method to show alert
   * @name showAlert
   * @param  {string} title
   * @param  {string} subTitle

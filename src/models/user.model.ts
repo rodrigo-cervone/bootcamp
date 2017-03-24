@@ -13,6 +13,15 @@ export class UserEntity   {
   ) {  }
 }
 
-export interface User extends UserEntity{
-
+export interface User{
+    login: string;
+    name: string;
+    company: string;
+    blog: string;
+    avatar_url: string;
+    public_repos: number;
+    public_gists: number;
+    followers: number;
+    following: number;
+    repos_url: string;
 }

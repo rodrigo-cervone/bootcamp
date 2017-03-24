@@ -30,14 +30,11 @@ export class UserEditPage {
 
   }
 
-  ionViewDidLoad() {
-    // Nothing
-  }
+
   /**
-  * Method to send th entity User to API of GitHub
-  * @Method
   * @name send|
   * @author {} Jaime Hernández
+  * @TODO Method to send th entity User to API of GitHub
   */
   send(){
     //Send to update the register
