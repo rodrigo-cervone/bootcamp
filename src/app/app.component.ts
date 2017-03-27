@@ -8,9 +8,11 @@ import { Events } from 'ionic-angular';
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { UserLoginPage } from '../pages/user-login/user-login';
+import { UserEditPage } from '../pages/user-edit/user-edit';
 import { GithubUsers, SigninInfo } from '../services/github-users.services';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { PerformanceGSAPPage } from '../pages/performance-gsap/performance-gsap';
+import { AnimationPage } from '../pages/animation/animation';
 
 interface Page {
   title: string,
@@ -38,7 +40,9 @@ export class MyApp {
     this.pages = [
       { title: 'Users', component: UsersPage },
       { title: 'Repos', component: ReposPage },
-      { title: 'GSAP Demo', component: PerformanceGSAPPage }
+      { title: 'GSAP Demo', component: PerformanceGSAPPage },
+      { title: 'Edit Profile', component: UserEditPage },
+      { title: 'Animation CSS3', component: AnimationPage }
     ];
   }
 

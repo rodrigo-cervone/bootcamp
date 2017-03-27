@@ -9,7 +9,8 @@ import {
   ERR_SIGNIN_BAD_CREDENTIALS
 } from '../../services/github-users.services';
 import { UserDetailsPage } from '../user-details/user-details';
-
+import { SessionService } from '../../services/session.service';
+import { User } from '../../models/user.model';
 /*
   Generated class for the UserLogin page.
 
@@ -30,8 +31,11 @@ export class UserLoginPage {
     public navParams: NavParams,
     private githubUsers: GithubUsers,
     private logger: Logger,
-    private alertCtrl: AlertController
-  ) {}
+    private alertCtrl: AlertController,
+    public sessionService : SessionService
+  ) {
+    //Nothing
+  }
 
   ionViewDidLoad() {
     this.logger.debug('ionViewDidLoad UserLoginPage');
@@ -43,7 +47,16 @@ export class UserLoginPage {
       .subscribe((userInfo: SigninInfo) => {
         this.logger.debug('Authentication was ok.');
         this.userInfo = userInfo;
-        this.navCtrl.setRoot(UserDetailsPage, {login: this.userInfo.login});
+
+        //Getting user info and save on a service
+        this.githubUsers
+          .loadDetails(this.userInfo.login)
+            .subscribe((user: User) => {
+                this.sessionService.userReturn = user;
+                this.sessionService.loggedInReturn = true;
+                this.navCtrl.setRoot(UserDetailsPage, {login: this.userInfo.login});
+              });
+
       }, (userInfo: SigninInfo) => {
         if (userInfo.errorCode === ERR_SIGNIN_BAD_CREDENTIALS) {
           this.showAlert("Error ","Bad credentials")
@@ -53,8 +66,7 @@ export class UserLoginPage {
   }
 
   /**
-  * Method to show alert
-  * @Method
+  * @TODO Method to show alert
   * @name showAlert
   * @param  {string} title
   * @param  {string} subTitle
