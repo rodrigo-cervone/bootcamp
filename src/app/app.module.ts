@@ -15,6 +15,9 @@ import { ReposPage } from '../pages/repos/repos';
 import { UserEditPage } from '../pages/user-edit/user-edit';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
+import { AnimationPage } from '../pages/animation/animation';
+
+import { MockBootcampBackendModule } from '../mock-bootcamp-backend/mock-bootcamp-backend.module';
 
 export function provideStorage() {
   return new Storage( ['sqlite', 'websql', 'indexeddb'], { name: '__bootcampdb' } );
@@ -27,10 +30,12 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
-    UserEditPage
+    UserEditPage,
+    AnimationPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    MockBootcampBackendModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +44,8 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
-    UserEditPage
+    UserEditPage,
+    AnimationPage
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
@@ -50,5 +56,4 @@ export function provideStorage() {
     SessionService
   ]
 })
-export class AppModule {
-}
+export class AppModule {}
