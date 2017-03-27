@@ -32,9 +32,6 @@ export class UserDetailsPage {
     this.user=this.sessionService.userReturn;
   }
 
-  ionViewDidLoad() {
-      //Nothing
-  }
 
   goToRepos(login: string) {
     this.navCtrl.push(ReposPage, {login});
