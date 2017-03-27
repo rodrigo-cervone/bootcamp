@@ -11,6 +11,8 @@ import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { AnimationPage } from '../pages/animation/animation';
 
+import { MockBootcampBackendModule } from '../mock-bootcamp-backend/mock-bootcamp-backend.module';
+
 export function provideStorage() {
   return new Storage( ['sqlite', 'websql', 'indexeddb'], { name: '__bootcampdb' } );
 }
@@ -25,7 +27,8 @@ export function provideStorage() {
     AnimationPage,
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    MockBootcampBackendModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,5 +47,4 @@ export function provideStorage() {
     GithubUsers
   ]
 })
-export class AppModule {
-}
+export class AppModule {}
