@@ -10,6 +10,7 @@ import { ReposPage } from '../pages/repos/repos';
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { GithubUsers, SigninInfo } from '../services/github-users.services';
 import { UserDetailsPage } from '../pages/user-details/user-details';
+import { AnimationPage } from '../pages/animation/animation';
 
 interface Page {
   title: string,
@@ -36,7 +37,8 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Users', component: UsersPage },
-      { title: 'Repos', component: ReposPage }
+      { title: 'Repos', component: ReposPage },
+      { title: 'Animation CSS3', component: AnimationPage }
     ];
   }
 
