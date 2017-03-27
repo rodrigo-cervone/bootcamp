@@ -49,7 +49,5 @@ export function provideStorage() {
   ]
 })
 export class AppModule {
-  constructor() {
-    // console.log(UserLoginPage)
-  }
+  constructor() { }
 }
