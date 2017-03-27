@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Logger } from 'angular2-logger/core';
 import { User } from '../../models/user.model';
 import { GithubUsers } from '../../services/github-users.services';
+import { SessionService } from '../../services/session.service';
 import { ReposPage } from '../repos/repos';
 import { 
   LANGS,
@@ -31,9 +32,11 @@ export class UserDetailsPage {
     public navParams: NavParams,
     private githubUsers: GithubUsers,
     private i18nService: I18nService,
-    private logger: Logger
+    private logger: Logger,
+    private sessionService : SessionService
   ) {
     this.login = navParams.get('login');
+    this.user=this.sessionService.userReturn;
     this.githubUsers.loadDetails(this.login).subscribe((user: User) => {
       this.user = user;
       this.logger.debug("User: ", this.user);
@@ -42,9 +45,6 @@ export class UserDetailsPage {
     this.isSpanish = this.currentLanguage === LANGS.ES;
   }
 
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad UserDetailsPage');
-  }
 
   goToRepos(login: string) {
     this.navCtrl.push(ReposPage, {login});

@@ -2,11 +2,17 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { Logger, Options, Level } from "angular2-logger/core";
 import { Storage } from '@ionic/storage';
 
+
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+//Services
 import { GithubUsers } from '../services/github-users.services';
+import { SessionService } from '../services/session.service';
+
+
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
+import { UserEditPage } from '../pages/user-edit/user-edit';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { I18nModule } from '../i18n/i18n.module';
@@ -28,7 +34,8 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
-    AnimationPage,
+    UserEditPage,
+    AnimationPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -41,7 +48,8 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
-    AnimationPage,
+    UserEditPage,
+    AnimationPage
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
@@ -49,6 +57,7 @@ export function provideStorage() {
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     Logger,
     GithubUsers,
+    SessionService,
     I18nService
   ],
   bootstrap: [IonicApp]

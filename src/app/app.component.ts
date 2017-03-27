@@ -8,6 +8,7 @@ import { Events } from 'ionic-angular';
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { UserLoginPage } from '../pages/user-login/user-login';
+import { UserEditPage } from '../pages/user-edit/user-edit';
 import { GithubUsers, SigninInfo } from '../services/github-users.services';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { AnimationPage } from '../pages/animation/animation';
@@ -38,6 +39,7 @@ export class MyApp {
     this.pages = [
       { title: 'Users', component: UsersPage },
       { title: 'Repos', component: ReposPage },
+      { title: 'Edit Profile', component: UserEditPage },
       { title: 'Animation CSS3', component: AnimationPage }
     ];
   }
