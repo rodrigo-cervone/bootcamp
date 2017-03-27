@@ -10,11 +10,12 @@ import { ReposPage } from '../pages/repos/repos';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { I18nModule } from '../i18n/i18n.module';
-
 import { 
   I18nService, 
   LANGS, 
 } from '../i18n/i18n.service';
+import { AnimationPage } from '../pages/animation/animation';
+import { MockBootcampBackendModule } from '../mock-bootcamp-backend/mock-bootcamp-backend.module';
 
 export function provideStorage() {
   return new Storage( ['sqlite', 'websql', 'indexeddb'], { name: '__bootcampdb' } );
@@ -26,11 +27,13 @@ export function provideStorage() {
     UsersPage,
     ReposPage,
     UserDetailsPage,
-    UserLoginPage
+    UserLoginPage,
+    AnimationPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    I18nModule
+    I18nModule,
+    MockBootcampBackendModule
   ],
   entryComponents: [
     MyApp,
@@ -38,6 +41,7 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
+    AnimationPage,
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
