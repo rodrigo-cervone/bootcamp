@@ -5,16 +5,19 @@ import { Storage } from '@ionic/storage';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-//Services
+
+/* Services */
 import { GithubUsers } from '../services/github-users.services';
 import { SessionService } from '../services/session.service';
 
 
+/* Pages */
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 import { UserEditPage } from '../pages/user-edit/user-edit';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
+import { PerformanceGSAPPage } from '../pages/performance-gsap/performance-gsap';
 import { I18nModule } from '../i18n/i18n.module';
 import { 
   I18nService, 
@@ -34,6 +37,7 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
+    PerformanceGSAPPage,
     UserEditPage,
     AnimationPage
   ],
@@ -48,6 +52,7 @@ export function provideStorage() {
     ReposPage,
     UserDetailsPage,
     UserLoginPage,
+    PerformanceGSAPPage,
     UserEditPage,
     AnimationPage
   ],
