@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Drag and drop demo
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col width-50 class="left">
+      <div class="header">First Bucket</div>
+      <ion-list [dragula]='"my-bag"' [dragulaModel]="list">
+          <div class="list-item" *ngFor="let item of listOrig">
+            {{item}}
+          </div>
+      </ion-list>
+    </ion-col>
+ 
+    <ion-col width-50 class="right">
+      <div class="header">Second Bucket</div>
+      <ion-list [dragula]='"my-bag"' [dragulaModel]="list">
+          <div class="list-item" *ngFor="let item of listTarget">
+            {{item}}
+          </div>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>
