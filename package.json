@@ -24,6 +24,7 @@
     "@ionic/storage": "1.1.7",
     "angular2-logger": "^0.5.1",
     "dragula": "^3.7.2",
+    "gsap": "^1.19.1",
     "ionic-angular": "2.1.0",
     "ionic-native": "2.4.1",
     "ionicons": "3.0.0",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
     "@ionic/app-scripts": "1.1.3",
+    "@types/gsap": "^1.19.1",
     "@types/jasmine": "^2.5.43",
     "angular-in-memory-web-api": "^0.3.1",
     "codecov": "^1.0.1",

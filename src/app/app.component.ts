@@ -11,6 +11,7 @@ import { UserLoginPage } from '../pages/user-login/user-login';
 import { UserEditPage } from '../pages/user-edit/user-edit';
 import { GithubUsers, SigninInfo } from '../services/github-users.services';
 import { UserDetailsPage } from '../pages/user-details/user-details';
+import { PerformanceGSAPPage } from '../pages/performance-gsap/performance-gsap';
 import { AnimationPage } from '../pages/animation/animation';
 import { DragAndDropDemoPage } from '../pages/drag-and-drop-demo/drag-and-drop-demo';
 
@@ -40,6 +41,7 @@ export class MyApp {
     this.pages = [
       { title: 'Users', component: UsersPage },
       { title: 'Repos', component: ReposPage },
+      { title: 'GSAP Demo', component: PerformanceGSAPPage },
       { title: 'Edit Profile', component: UserEditPage },
       { title: 'Animation CSS3', component: AnimationPage },
       { title: 'Drag and drop Demo', component: DragAndDropDemoPage },
@@ -53,7 +55,7 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
       this.events.subscribe('user::loggedin', (signinInfo: SigninInfo) => {
-        this.nav.setRoot(UserDetailsPage, {'login':signinInfo.login});
+        this.nav.setRoot(UserDetailsPage);
       });
     });
     this.menu.swipeEnable(false, 'sidemenu');
