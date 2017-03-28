@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { Logger, Options, Level } from "angular2-logger/core";
 import { Storage } from '@ionic/storage';
+import { DragulaModule, DragulaService } from 'ng2-dragula';
 
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -22,6 +23,7 @@ import {
 } from '../i18n/i18n.service';
 import { AnimationPage } from '../pages/animation/animation';
 import { MockBootcampBackendModule } from '../mock-bootcamp-backend/mock-bootcamp-backend.module';
+import { DragAndDropDemoPage } from '../pages/drag-and-drop-demo/drag-and-drop-demo';
 
 export function provideStorage() {
   return new Storage( ['sqlite', 'websql', 'indexeddb'], { name: '__bootcampdb' } );
@@ -35,12 +37,14 @@ export function provideStorage() {
     UserDetailsPage,
     UserLoginPage,
     UserEditPage,
-    AnimationPage
+    AnimationPage,
+    DragAndDropDemoPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp),
     I18nModule,
-    MockBootcampBackendModule
+    MockBootcampBackendModule,
+    DragulaModule,
   ],
   entryComponents: [
     MyApp,
@@ -49,7 +53,8 @@ export function provideStorage() {
     UserDetailsPage,
     UserLoginPage,
     UserEditPage,
-    AnimationPage
+    AnimationPage,
+    DragAndDropDemoPage,
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
@@ -58,7 +63,8 @@ export function provideStorage() {
     Logger,
     GithubUsers,
     SessionService,
-    I18nService
+    I18nService,
+    DragulaService,
   ],
   bootstrap: [IonicApp]
 })

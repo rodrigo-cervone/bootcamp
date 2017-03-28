@@ -12,6 +12,7 @@ import { UserEditPage } from '../pages/user-edit/user-edit';
 import { GithubUsers, SigninInfo } from '../services/github-users.services';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { AnimationPage } from '../pages/animation/animation';
+import { DragAndDropDemoPage } from '../pages/drag-and-drop-demo/drag-and-drop-demo';
 
 interface Page {
   title: string,
@@ -33,14 +34,15 @@ export class MyApp {
     private events: Events,
     private githubUsers: GithubUsers
   ) {
-    this.initializeApp();
 
+    this.initializeApp();
     // set our app's pages
     this.pages = [
       { title: 'Users', component: UsersPage },
       { title: 'Repos', component: ReposPage },
       { title: 'Edit Profile', component: UserEditPage },
-      { title: 'Animation CSS3', component: AnimationPage }
+      { title: 'Animation CSS3', component: AnimationPage },
+      { title: 'Drag and drop Demo', component: DragAndDropDemoPage },
     ];
   }
 
@@ -54,6 +56,7 @@ export class MyApp {
         this.nav.setRoot(UserDetailsPage, {'login':signinInfo.login});
       });
     });
+    this.menu.swipeEnable(false, 'sidemenu');
   }
 
   logout() {
