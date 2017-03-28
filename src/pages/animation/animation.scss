@@ -111,7 +111,18 @@ a {
   color: #aaa;
 }
 
-
+button.social-media-twitter{
+   background : color($colors, twitter, base);
+   display:block;
+   //Ios
+   .ios{
+     text-transform: lowercase;
+   }
+   //Android
+   .md{
+     text-transform: capitalize;
+   }
+}
 
 .globe {
   margin: 1em 0 0 0;
@@ -163,7 +174,7 @@ a {
       height: 186px;
       border-radius: 50%;
       background-clip: padding-box;
-      background-color: $birdColor;
+      background-color:map-get($colors, secondary);
       box-shadow: inset 0 0 80px rgba(0,0,0,.3);
       &:before, &:after {
         position: absolute;
@@ -394,3 +405,5 @@ a {
   }
 }
 }
+
+
