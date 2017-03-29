@@ -19,12 +19,16 @@ import { UserDetailsPage } from '../pages/user-details/user-details';
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { PerformanceGSAPPage } from '../pages/performance-gsap/performance-gsap';
 import { I18nModule } from '../i18n/i18n.module';
-import { 
-  I18nService, 
-  LANGS, 
+import {
+  I18nService,
+  LANGS,
 } from '../i18n/i18n.service';
 import { AnimationPage } from '../pages/animation/animation';
 import { MockBootcampBackendModule } from '../mock-bootcamp-backend/mock-bootcamp-backend.module';
+import { ScouchdbPage } from '../pages/scouchdb/scouchdb';
+
+/*Providers*/
+import { Todos } from '../providers/todos';
 
 export function provideStorage() {
   return new Storage( ['sqlite', 'websql', 'indexeddb'], { name: '__bootcampdb' } );
@@ -39,7 +43,8 @@ export function provideStorage() {
     UserLoginPage,
     PerformanceGSAPPage,
     UserEditPage,
-    AnimationPage
+    AnimationPage,
+    ScouchdbPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -54,7 +59,8 @@ export function provideStorage() {
     UserLoginPage,
     PerformanceGSAPPage,
     UserEditPage,
-    AnimationPage
+    AnimationPage,
+    ScouchdbPage
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
@@ -63,7 +69,8 @@ export function provideStorage() {
     Logger,
     GithubUsers,
     SessionService,
-    I18nService
+    I18nService,
+    Todos
   ],
   bootstrap: [IonicApp]
 })
