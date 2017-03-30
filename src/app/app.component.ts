@@ -14,6 +14,9 @@ import { UserDetailsPage } from '../pages/user-details/user-details';
 import { PerformanceGSAPPage } from '../pages/performance-gsap/performance-gsap';
 import { AnimationPage } from '../pages/animation/animation';
 
+//CouchDB Page
+import { ScouchdbPage } from '../pages/scouchdb/scouchdb';
+
 interface Page {
   title: string,
   component: any
@@ -42,7 +45,8 @@ export class MyApp {
       { title: 'Repos', component: ReposPage },
       { title: 'GSAP Demo', component: PerformanceGSAPPage },
       { title: 'Edit Profile', component: UserEditPage },
-      { title: 'Animation CSS3', component: AnimationPage }
+      { title: 'Animation CSS3', component: AnimationPage },
+      { title: 'POC couchDB', component: ScouchdbPage }
     ];
   }
 
