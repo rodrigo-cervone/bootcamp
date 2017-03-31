@@ -13,7 +13,7 @@ import { GithubUsers, SigninInfo } from '../services/github-users.services';
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { PerformanceGSAPPage } from '../pages/performance-gsap/performance-gsap';
 import { AnimationPage } from '../pages/animation/animation';
-
+import { IAPDemoPage } from '../pages/iap-demo/iap-demo';
 //CouchDB Page
 import { ScouchdbPage } from '../pages/scouchdb/scouchdb';
 
@@ -46,7 +46,8 @@ export class MyApp {
       { title: 'GSAP Demo', component: PerformanceGSAPPage },
       { title: 'Edit Profile', component: UserEditPage },
       { title: 'Animation CSS3', component: AnimationPage },
-      { title: 'POC couchDB', component: ScouchdbPage }
+      { title: 'POC couchDB', component: ScouchdbPage },
+      { title: 'IAP Demo', component: IAPDemoPage }
     ];
   }
 

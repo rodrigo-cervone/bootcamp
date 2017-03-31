@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { Logger, Options, Level } from "angular2-logger/core";
 import { Storage } from '@ionic/storage';
 
+import { UpgradeModule } from '@angular/upgrade/static';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -26,6 +27,8 @@ import {
 import { AnimationPage } from '../pages/animation/animation';
 import { MockBootcampBackendModule } from '../mock-bootcamp-backend/mock-bootcamp-backend.module';
 import { ScouchdbPage } from '../pages/scouchdb/scouchdb';
+import { IAPDemoPage } from '../pages/iap-demo/iap-demo';
+import { IapPlayerPlayerDrv } from '../pages/iap-demo/iap-demo.directive';
 
 /*Providers*/
 import { Todos } from '../providers/todos';
@@ -44,12 +47,15 @@ export function provideStorage() {
     PerformanceGSAPPage,
     UserEditPage,
     AnimationPage,
-    ScouchdbPage
+    ScouchdbPage,
+    IAPDemoPage,
+    IapPlayerPlayerDrv
   ],
   imports: [
     IonicModule.forRoot(MyApp),
     I18nModule,
-    MockBootcampBackendModule
+    MockBootcampBackendModule,
+    UpgradeModule
   ],
   entryComponents: [
     MyApp,
@@ -60,7 +66,8 @@ export function provideStorage() {
     PerformanceGSAPPage,
     UserEditPage,
     AnimationPage,
-    ScouchdbPage
+    ScouchdbPage,
+    IAPDemoPage
   ],
   providers: [
     { provide: Options, useValue: { level: Level.DEBUG } },
@@ -78,4 +85,6 @@ export class AppModule {
   constructor(i18nService:I18nService) {
     i18nService.use(LANGS.EN);
   }
+
+  ngDoBootstrap() {}
 }
